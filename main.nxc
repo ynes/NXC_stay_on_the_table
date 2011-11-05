@@ -1,0 +1,20 @@
+#include "sensor.h"
+#include "motors.h"
+
+
+task main() {
+set_us_sensor();
+  while(true) {
+   int us = SensorUS(IN_2);
+    NumOut(0,LCD_LINE2, us);
+    if( us < 20){
+     move_forward();
+    } else{
+      move_backward();
+      Wait(2000);
+      move_left();
+      Wait(2000);
+    }
+  }
+
+}
